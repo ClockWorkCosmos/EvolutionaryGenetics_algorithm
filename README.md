@@ -28,7 +28,7 @@ Algorithm:
   5. If the hidden unit fires, the agent will turn, else, the agent will move forward.
   6. If the output does not equal the correct output, randomly adjust weights and thresholds.
   7. Repeat for each training episode.
-     
+  -
   1. Parent A weights and threshold are equal to the weights and threshold of the agent with the highest score.
   2. Parent B weights and threshold are equal to the weights and threshold of the agent with a score quarter less than the highest scoring agent.
   3. Child offspring weights and threshold are equal to an even mix of Parent A and B weights and threshold, plus the mutation amount.
