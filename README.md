@@ -32,5 +32,5 @@ Algorithm:
 3. Compute hidden unit activation sum; Whereas activation sum is equal to the sum of each input unit multiplied by their associated weights.
 4. If the activation sum is equal to or greater than the threshold amount, the hidden unit fires, else, it does not fire.
 5. If the hidden unit fires, the agent will turn, else, the agent will move forward.
-6. If the output does not equal the correct output, randomly adjust weights and thresholds.
+6. If the output does not equal the correct output, randomly adjust weights and threshold.
 7. Repeat for each training episode.
