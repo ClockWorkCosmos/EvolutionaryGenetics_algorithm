@@ -24,7 +24,6 @@ Policy (Supervised learning):
 - Parent B weights and threshold are equal to the weights and threshold of the agent with a score quarter less than the highest scoring agent.
 - Child offspring weights and threshold are equal to an even mix of Parent A and B weights and threshold, plus the mutation amount.
 - Update generation.
-  
 Algorithm:
   1. Randomize initial weight and threshold amounts between -0.99 and 0.99.
   2. Input unit values are synonymous to the distance between the agent and the obstacle (0.00 - 0.99).
