@@ -28,6 +28,12 @@ goal = int(200)
 
 pause = float(0.00)
 
+input_color = [000,255,000]
+hidden_color = [000,000,255]
+output_color_a = [000,255,000]
+output_color_b = [000,255,000]
+red = [255,000,000]
+
 g = int(0)
 h = int(0)
 m = int(250)
@@ -137,19 +143,25 @@ while True:
 		c = -0.99
 		
 	if c >= d:
+		hidden_color = red
 		e = [1.00, 0.00]
 	if c < d:
+		hidden_color = [000,000,255]
 		e = [0.00, 1.00]
 		
 	if e == [1.00, 0.00]:
 		if r.randint(0,1) > 0:
 			action = "move_right"
+			output_color_a = [255,000,000]
+			output_color_b = [000,255,000]
 			if agent_angle < 360:
 				agent_angle += 90
 			elif agent_angle == 360:
 				agent_angle = 90
 		else:
 			action = "move_left"
+			output_color_a = [255,000,000]
+			output_color_b = [000,255,000]
 			if agent_angle == 0:
 				agent_angle = 270
 			elif agent_angle >= 0:
@@ -171,12 +183,20 @@ while True:
 		traversed += 1
 		if action == "move_forward" and agent_angle == 90:
 			agent_x += agent_speed
+			output_color_a = [000,255,000]
+			output_color_b = red
 		if action == "move_forward" and agent_angle == 180:
 			agent_y += agent_speed	
+			output_color_a = [000,255,000]
+			output_color_b = red
 		if action == "move_forward" and agent_angle == 270:
-			agent_x += 0-(agent_speed)			
+			agent_x += 0-(agent_speed)
+			output_color_a = [000,255,000]
+			output_color_b = red			
 		if action == "move_forward" and agent_angle == 360 or agent_angle == 0:
 			agent_y += 0-(agent_speed)	
+			output_color_a = [000,255,000]
+			output_color_b = red
 			
 	for x, _ in enumerate(a):
 		if a[x] < 0.3:
@@ -251,14 +271,12 @@ while True:
 		
 	font = pygame.font.Font('freesansbold.ttf', 12)
 	
-	ACTION = "Action:" + str(action)
+	ACTION = "Action:" + str(action) + " ~ Output:" + str(e) + " ~ Correct Output:" + str(f)
 	ANGLE = "Angle:" + str(agent_angle) + "*"
 	INPUT_LAYER = "Input Layer:" + str(a)
 	WEIGHTS = "Weights:" + str(b) 
 	HIDDEN_LAYER = "Hidden Unit:" + str(c)
 	THRESHOLD = "Threshold:" + str(d)
-	OUTPUT = "Output:" + str(e)
-	CORRECT_OUTPUT = "Correct Output:" + str(f)
 	SCORE = "Score:" + str(i)
 	HIGH_SCORE = "High Score:" + str(j)
 	ITERATION = "Episode:" + str(g) 
@@ -270,8 +288,6 @@ while True:
 	w_display = font.render(WEIGHTS, True, (0,0,0),(255,255,255))
 	h_display = font.render(HIDDEN_LAYER, True, (0,0,0),(255,255,255))
 	t_display = font.render(THRESHOLD, True, (0,0,0),(255,255,255))
-	o_display = font.render(OUTPUT, True, (0,0,0),(255,255,255))
-	co_display = font.render(CORRECT_OUTPUT, True, (0,0,0),(255,255,255))
 	s_display = font.render(SCORE, True, (0,0,0),(255,255,255))
 	hs_display = font.render(HIGH_SCORE, True, (0,0,0),(255,255,255))
 	i_display = font.render(ITERATION, True, (0,0,0),(255,255,255))
@@ -281,18 +297,29 @@ while True:
 	pygame.draw.rect(screen,(map_color),[map_x,map_y,map_size,map_size],2)
 	pygame.draw.rect(screen,(agent_color),[agent_x, agent_y, agent_size, agent_size],0)
 	
-	screen.blit(action_display, (0,60))
-	screen.blit(angle_display, (0,75))
-	screen.blit(w_display, (0,15))
-	screen.blit(h_display, (0,30))
-	screen.blit(t_display, (0,45))
-	screen.blit(il_display, (0,0))
-	screen.blit(o_display, (510,0))
-	screen.blit(co_display, (510,15))
-	screen.blit(s_display, (510,30))
-	screen.blit(hs_display, (510,45))
-	screen.blit(i_display, (650,0))
-	screen.blit(g_display, (650,15))
+	pygame.draw.line(screen, (0,0,0),[450,225], [550,325], 3)
+	pygame.draw.line(screen, (0,0,0),[450,325], [550,325], 3)
+	pygame.draw.line(screen, (0,0,0),[450,425], [550,325], 3)
+	pygame.draw.line(screen, (0,0,0),[550,325], [650,275], 3)
+	pygame.draw.line(screen, (0,0,0),[550,325], [650,375], 3)
+
+	pygame.draw.circle(screen, (input_color),[450,225], 20, 0)
+	pygame.draw.circle(screen, (input_color),[450,325], 20, 0)
+	pygame.draw.circle(screen, (input_color),[450,425], 20, 0)
+	pygame.draw.circle(screen, (hidden_color),[550,325], 25, 0)
+	pygame.draw.circle(screen, (output_color_a),[650,275], 20, 0)
+	pygame.draw.circle(screen, (output_color_b),[650,375], 20, 0)
+	
+	screen.blit(action_display, (220,60))
+	screen.blit(angle_display, (220,75))
+	screen.blit(w_display, (220,15))
+	screen.blit(h_display, (220,30))
+	screen.blit(t_display, (220,45))
+	screen.blit(il_display, (220,0))
+	screen.blit(s_display, (map_x,map_y - 20))
+	screen.blit(hs_display, (map_x + map_size - (map_size / 4),map_y - 20))
+	screen.blit(i_display, (0,0))
+	screen.blit(g_display, (0,15))
 	
 	t.sleep(pause)
 	pygame.display.flip()
