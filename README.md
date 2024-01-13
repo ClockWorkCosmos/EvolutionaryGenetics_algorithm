@@ -17,7 +17,7 @@ Network architecture:
   3. 1x Hidden unit
   4. 2x Output units (turn randomly or move forward)
 
-Policy (Supervised learning):
+Policy (Supervised learning) / Optimization Algorithm:
   1. If any of the input units are equal to or less than 0.3, the agent should turn, elsewise the agent should move forward.
 
 
