@@ -303,6 +303,12 @@ while True:
 	pygame.draw.line(screen, (0,0,0),[550,325], [650,275], 3)
 	pygame.draw.line(screen, (0,0,0),[550,325], [650,375], 3)
 
+	pygame.draw.circle(screen, (black),[450,225], 22, 0)
+	pygame.draw.circle(screen, (black),[450,325], 22, 0)
+	pygame.draw.circle(screen, (black),[450,425], 22, 0)
+	pygame.draw.circle(screen, (black),[550,325], 27, 0)
+	pygame.draw.circle(screen, (black),[650,275], 22, 0)
+	pygame.draw.circle(screen, (black),[650,375], 22, 0)
 	pygame.draw.circle(screen, (input_color),[450,225], 20, 0)
 	pygame.draw.circle(screen, (input_color),[450,325], 20, 0)
 	pygame.draw.circle(screen, (input_color),[450,425], 20, 0)
