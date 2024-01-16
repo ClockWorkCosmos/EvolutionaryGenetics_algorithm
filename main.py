@@ -94,8 +94,8 @@ while True:
 			i = 0
 			g = 0
 			for x, _ in enumerate(b):
-				b[x] = ((q[x] + p[x])/2) + r.uniform(-l, l)	
-			d = ((o + s)/2) + r.uniform(-l, l)
+				b[x] = ((q[x] + p[x])/2) + r.uniform(-0.0015, 0.0015)	
+			d = ((o + s)/2) + r.uniform(-0.0015, 0.0015)
 			a = [0.00, 0.00, 0.00]
 			e = [0.00, 0.00]
 			action = ""	
