@@ -33,6 +33,7 @@ hidden_color = [000,000,255]
 output_color_a = [000,255,000]
 output_color_b = [000,255,000]
 red = [255,000,000]
+black = [0,0,0]
 
 g = int(0)
 h = int(0)
