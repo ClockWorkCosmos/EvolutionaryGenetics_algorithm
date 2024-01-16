@@ -94,7 +94,9 @@ while True:
 			i = 0
 			g = 0
 			for x, _ in enumerate(b):
+				#Suggested to spend time tweaking the mutation rates 'r.uniform(-0.0015, 0.0015)' for best results
 				b[x] = ((q[x] + p[x])/2) + r.uniform(-0.0015, 0.0015)	
+			#Suggested to spend time tweaking the mutation rates 'r.uniform(-0.0015, 0.0015)' for best results
 			d = ((o + s)/2) + r.uniform(-0.0015, 0.0015)
 			a = [0.00, 0.00, 0.00]
 			e = [0.00, 0.00]
